@@ -1,29 +1,45 @@
-import React, { useState } from 'react'
-import { Image, Text, TextInput, View } from 'react-native'
-import styles from './login.styles';
-
-import { IMAGE_PATHS } from '../../constants/imagePaths';
+import React, { useState } from "react";
+import { Image, Text, TextInput, View, StyleSheet } from "react-native";
+import styles from "./login.styles";
+import { IMAGE_PATHS } from "../../constants/imagePaths";
+import CheckSubcribe from "../../components/checkSubcribe/checkSubcribe";
+import ButtonLogin from "../../components/buttonLogin/buttonLogin";
 
 function LoginScreen() {
-  const[user,setUser] = useState("");
-  const[password,setPassword] = useState("");
+  const [user, setUser] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <View style={styles.container}>
       <View>
-        <Image source={IMAGE_PATHS.logo}></Image>
+        <Image style={styles.logo} source={IMAGE_PATHS.logo} />
       </View>
       <View>
-        <Text>Sign Up</Text>
+        <Text style={styles.signUP}>Sign Up</Text>
       </View>
-      <View>
-      <TextInput style={styles.inputs} placeholder='login' onChangeText={setUser} value={user}></TextInput>
+
+      <View style={styles.inputs}>
+        <TextInput
+          style={styles.input}
+          placeholder="Login"
+          onChangeText={setUser}
+          value={user}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder="Senha"
+          onChangeText={setPassword}
+          value={password}
+          secureTextEntry
+        />
       </View>
+
       <View>
-      <TextInput style={styles.inputs} placeholder='senha' onChangeText={setPassword} value={password}></TextInput>
+        <CheckSubcribe />
+        <ButtonLogin />
       </View>
     </View>
-  )
+  );
 }
 
 export default LoginScreen;
