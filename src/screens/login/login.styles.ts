@@ -24,7 +24,12 @@ const styles=StyleSheet.create({
   signUP:{
     fontWeight:"bold",
     fontSize:15,
-  }
+  },
+  text: {
+    color: "red",
+    textAlign:"center",
+    fontWeight:"bold"
+  },
 });
 
 export default styles;

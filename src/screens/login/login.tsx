@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Image, Text, TextInput, View, StyleSheet } from "react-native";
+import { Image, Text, TextInput, View, StyleSheet, TouchableOpacity } from "react-native";
 import styles from "./login.styles";
+
 import { IMAGE_PATHS } from "../../constants/imagePaths";
 import CheckSubcribe from "../../components/checkSubcribe/checkSubcribe";
 import ButtonLogin from "../../components/buttonLogin/buttonLogin";
@@ -10,12 +11,18 @@ function LoginScreen() {
   const [password, setPassword] = useState("");
   const[checked,setChecked] = useState(false);
 
-  const handleSwitchChange = (value:boolean)=>{
-    setChecked(value);
-    if(value ===true){
+  const handleLogin =()=>{
+    if(checked ===true){
       console.log(`USUARIO: ${user}, SENHA: ${password}`)
     }
   };
+
+  //const handleSwitchChange = (value:boolean)=>{
+  //  setChecked(value);
+  //  if(value ===true){
+  //    console.log(`USUARIO: ${user}, SENHA: ${password}`)
+  //  }
+  //};
 
   return (
     <View style={styles.container}>
@@ -43,8 +50,8 @@ function LoginScreen() {
       </View>
 
       <View>
-        <CheckSubcribe checked={checked} onSwitchChange={handleSwitchChange} />
-        <ButtonLogin />
+        <CheckSubcribe checked={checked} onSwitchChange={setChecked} />
+        <TouchableOpacity onPress={handleLogin}><Text style={styles.text}>Lets'Go</Text></TouchableOpacity>
       </View>
     </View>
   );
