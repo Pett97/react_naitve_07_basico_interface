@@ -8,6 +8,14 @@ import ButtonLogin from "../../components/buttonLogin/buttonLogin";
 function LoginScreen() {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
+  const[checked,setChecked] = useState(false);
+
+  const handleSwitchChange = (value:boolean)=>{
+    setChecked(value);
+    if(value ===true){
+      console.log(`USUARIO: ${user}, SENHA: ${password}`)
+    }
+  };
 
   return (
     <View style={styles.container}>
@@ -35,7 +43,7 @@ function LoginScreen() {
       </View>
 
       <View>
-        <CheckSubcribe />
+        <CheckSubcribe checked={checked} onSwitchChange={handleSwitchChange} />
         <ButtonLogin />
       </View>
     </View>

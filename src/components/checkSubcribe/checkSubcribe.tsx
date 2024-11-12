@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import { Switch, Text, View } from "react-native";
 import styles from './checkSubcribe.style';
-function CheckSubcribe() {
-  const [checked, setChecked] = useState(false);
 
-  const handleSwitchChange = (value: boolean) => {
-    setChecked(value);
-  };
+type CheckSubcribeProps={
+  checked:boolean;
+  onSwitchChange:(value:boolean)=>void;
+};
 
+function CheckSubcribe({checked,onSwitchChange}:CheckSubcribeProps) {
   return (
     <View style={styles.container}>
       <View>
         <Text>Subscribe to Newsletter</Text>
       </View>
       <View>
-        <Switch value={checked} onValueChange={handleSwitchChange}></Switch>
+        <Switch value={checked} onValueChange={onSwitchChange}></Switch>
       </View>
     </View>
   );
